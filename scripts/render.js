@@ -1,4 +1,4 @@
-import { getItems } from './store';
+import { getItems, store } from './store.js';
 
 const loader = document.querySelector('.loader');
 const ul = document.querySelector('.todo__list');

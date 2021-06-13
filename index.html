@@ -38,7 +38,8 @@
       <div class="input-group mb-3 js-add-form">
         <input type="text" class="form-control col-8 mr-2 js-input" placeholder="Введите название дела"
           aria-label="Введите название дела" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2" data-action="add">Добавить дело</button>
+        <button class="btn btn-outline-secondary js-add-btn" type="button" id="button-addon2" data-action="add">Добавить
+          дело</button>
       </div>
     </div>
     <div class="todo col-10">
@@ -49,8 +50,11 @@
       </div>
       <ul class="todo__list list-group">
         <li class="todo__item d-flex list-group-item">
-          <p class="todo__text col-10 mr-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aperiam numquam
-            laboriosam nesciunt doloremque quisq Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quod dolorem vero? Saepe tempora beatae sed error enim porro, ipsam pariatur culpa commodi. Consequuntur dicta tenetur totam architecto, fugit adipisci?</p>
+          <p class="todo__text col-10 mr-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aperiam
+            numquam
+            laboriosam nesciunt doloremque quisq Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quod
+            dolorem vero? Saepe tempora beatae sed error enim porro, ipsam pariatur culpa commodi. Consequuntur dicta
+            tenetur totam architecto, fugit adipisci?</p>
           <div class="button-wrapper align-self-center">
             <button data-action="done" class="btn todo__done btn-primary">Готово</button>
             <button data-action="del" class="btn todo__del btn-danger">Удалить</button>
@@ -59,14 +63,15 @@
       </ul>
     </div>
   </main>
-<script type="module">
-  import { showItems } from './scripts/render.js';
-  showItems();
-</script>
-<script type="module" src="./scripts/render.js"></script>
-<script type="module" src="./scripts/store.js"></script>
-<script type="module" src="./scripts/local.js"></script>
-<script type="module" src="./scripts/server.js"></script>
+  <script type="module">
+    import { init } from './scripts/index.js';
+    init();
+  </script>
+  <script type="module" src="./scripts/server.js"></script>
+  <script type="module" src="./scripts/local.js"></script>
+  <script type="module" src="./scripts/render.js"></script>
+  <script type="module" src="./scripts/store.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
