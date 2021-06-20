@@ -15,9 +15,9 @@
     <nav class="header__navigation navigation navbar navbar-expand-lg navbar-light bg-light mb-4">
       <h2 class="mr-auto">Мои дела</h2>
       <ul class="navigation__list navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
-        <li class="nav-item"><a href="./?page=mom" class="nav-link">Дела мамы</a></li>
-        <li class="nav-item"><a href="./?page=dad" class="nav-link">Дела папы</a></li>
-        <li class="nav-item"><a href="/?page=me" class="nav-link">Мои дела</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-name="mom">Дела мамы</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-name="dad">Дела папы</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-name="">Мои дела</a></li>
       </ul>
     </nav>
   </header>
@@ -43,23 +43,12 @@
       </div>
     </div>
     <div class="todo col-10">
-      <div class="text-center d-none loader">
-        <div class="spinner-border" role="status">
+      <div class="text-center" style="height: 30px;">
+        <div class="spinner-border  d-none loader" role="status">
           <span class="visually-hidden">Загрузка...</span>
         </div>
       </div>
       <ul class="todo__list list-group">
-        <li class="todo__item d-flex list-group-item">
-          <p class="todo__text col-10 mr-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aperiam
-            numquam
-            laboriosam nesciunt doloremque quisq Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quod
-            dolorem vero? Saepe tempora beatae sed error enim porro, ipsam pariatur culpa commodi. Consequuntur dicta
-            tenetur totam architecto, fugit adipisci?</p>
-          <div class="button-wrapper align-self-center">
-            <button data-action="done" class="btn todo__done btn-primary">Готово</button>
-            <button data-action="del" class="btn todo__del btn-danger">Удалить</button>
-          </div>
-        </li>
       </ul>
     </div>
   </main>

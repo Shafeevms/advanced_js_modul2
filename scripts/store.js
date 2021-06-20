@@ -1,11 +1,8 @@
 export const store = {
-  listners: [],
-  data: []
+  data: [],
+  page: '/',
 };
 
-// ? является ли это динамическим импортом?
-// ? если выношу из функции const storage = document.querySelector('#server') - ошибка:
-// ? Uncaught (in promise) TypeError: storage.getData is not a function at getItems (store.js:13)
 
 export const getItems = async () => {
   const storage = document.querySelector('#server').checked
