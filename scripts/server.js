@@ -1,6 +1,17 @@
-// getItems, pushItems
+import { store } from "./store";
+
 console.log('Серверное хранилище');
 
+const URL = 'http://localhost:3000/api/todos';
+
 export const getData = () => {
-  console.log('server');
-}
+  return fetch(URL)
+          .then(res => res.json())
+          .then(res => store.data = [...res])
+};
+
+// export const setData = () => {
+//   fetch(URL, {
+//     method: POST
+//   })
+// };

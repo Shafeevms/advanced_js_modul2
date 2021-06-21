@@ -1,10 +1,11 @@
 import { showItems } from './render.js';
 import { setItems, store } from './store.js';
 
-const input = document.querySelector('.js-input');
+export const input = document.querySelector('.js-input');
 const addBtn = document.querySelector('.js-add-btn');
 const ul = document.querySelector('.todo__list');
 const header = document.querySelector('.header');
+const radioBtn = document.querySelector('.js-radio');
 
 export const init = () => {
   showItems();
@@ -19,9 +20,9 @@ const setListeners = () => {
       act: input.value,
       done: false,
     });
-    input.value = '';
     setItems();
     showItems();
+    input.value = '';
   });
 
   ul.addEventListener('click', (e) => {
@@ -39,6 +40,9 @@ const setListeners = () => {
     window.location.hash = e.target.dataset.name;
     showItems();
   })
+  radioBtn.addEventListener('change', (e) => {
+    console.log(e.target.id);
+  })
 }
 
 const onDone = (e) => {
@@ -55,7 +59,8 @@ const onDone = (e) => {
 const onDelete = (e) => {
   const currentId = +e.target.closest('li').dataset.id;
   store.data = store.data.filter(el => el.id !== currentId);
-  console.log(store.data)
   setItems();
   showItems();
 };
+
+// ? подумать как состояние какое хранилище выбрано влияет на всю работу
