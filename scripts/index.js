@@ -25,6 +25,7 @@ const setListeners = () => {
   });
 
   ul.addEventListener('click', (e) => {
+    e.preventDefault();
     if (e.target.classList.contains('todo__done')) {
       onDone(e);
     }
@@ -35,10 +36,8 @@ const setListeners = () => {
 
   header.addEventListener('click', (e) => {
     e.preventDefault();
-    const target = e.target.dataset.name;
-    const page = new URLSearchParams(window.location.search);
-    page.set('page', target);
-    console.log(page)
+    window.location.hash = e.target.dataset.name;
+    showItems();
   })
 }
 
@@ -59,4 +58,4 @@ const onDelete = (e) => {
   console.log(store.data)
   setItems();
   showItems();
-}
+};

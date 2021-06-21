@@ -1,10 +1,15 @@
 import { store } from "./store.js";
 
 console.log('Локальное хранилище');
-// const page = new URLSearchParams(window.location.search).get('page');
 
-export const getData = (page = '/') => {
-  store.data = JSON.parse(localStorage.getItem(store.page)) ?? [];
+
+export const getData = () => {
+  const page = window.location.hash || '#me';
+  store.data = JSON.parse(localStorage.getItem(page)) ?? [];
+  console.log(store.data);
 };
 
-export const setData = () => localStorage.setItem(store.page, JSON.stringify(store.data));
+export const setData = () => {
+  const page = window.location.hash || '#me';
+  localStorage.setItem(page, JSON.stringify(store.data))
+};
