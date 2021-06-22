@@ -17,10 +17,10 @@ const setListeners = () => {
     e.preventDefault();
     store.data.push({
       id: store.data.length + 1,
-      act: input.value,
+      name: input.value,
       done: false,
     });
-    setItems();
+    setItems(input.value);
     showItems();
     input.value = '';
   });
@@ -42,6 +42,7 @@ const setListeners = () => {
   })
   radioBtn.addEventListener('change', (e) => {
     console.log(e.target.id);
+    showItems();
   })
 }
 

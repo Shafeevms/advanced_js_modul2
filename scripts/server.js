@@ -1,17 +1,24 @@
-import { store } from "./store";
+import { store } from "./store.js";
 
 console.log('Серверное хранилище');
 
 const URL = 'http://localhost:3000/api/todos';
 
-export const getData = () => {
-  return fetch(URL)
-          .then(res => res.json())
-          .then(res => store.data = [...res])
+export const getData = async() => {
+  console.log(1)
+  const res = await fetch(URL);
+  const json = await res.json();
+  store.data = json;
 };
 
-// export const setData = () => {
-//   fetch(URL, {
-//     method: POST
-//   })
-// };
+
+export const setData = (name) => {
+  const body = {
+    owner: window.location.hash || '#me',
+    name,
+  }
+  fetch(URL, {
+    method: 'POST',
+    body: JSON.stringify(body)
+  })
+};
