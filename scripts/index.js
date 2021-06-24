@@ -41,7 +41,6 @@ const setListeners = () => {
     showItems();
   })
   radioBtn.addEventListener('change', (e) => {
-    console.log(e.target.id);
     showItems();
   })
 }

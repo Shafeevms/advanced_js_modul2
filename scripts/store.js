@@ -1,7 +1,7 @@
 export const store = {
   data: [],
   page: '/',
-  currentTodo: {},
+  store: null,
 };
 
 

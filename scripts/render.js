@@ -9,7 +9,6 @@ const removeLoader = () => loader.classList.add('d-none');
 const showItems = async() => {
   showLoader();
   await getItems();
-  console.log(store.data)
   printItems(ul, dataString(store.data));
   removeLoader();
 };
