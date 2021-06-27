@@ -1,5 +1,5 @@
 import { showItems } from './render.js';
-import { store, setItems, onDone } from './store.js';
+import { setItems, store } from './store.js';
 
 export const input = document.querySelector('.js-input');
 const addBtn = document.querySelector('.js-add-btn');
@@ -7,13 +7,23 @@ const ul = document.querySelector('.todo__list');
 const header = document.querySelector('.header');
 const radioBtn = document.querySelector('.js-radio');
 
-export const init = async() => {
-  await showItems();
+export const init = () => {
+  showItems();
   setListeners();
 }
 
 const setListeners = () => {
-  addBtn.addEventListener('click', addTodo);
+  addBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    store.data.push({
+      id: store.data.length + 1,
+      name: input.value,
+      done: false,
+    });
+    setItems(input.value);
+    showItems();
+    input.value = '';
+  });
 
   ul.addEventListener('click', (e) => {
     e.preventDefault();
@@ -35,6 +45,17 @@ const setListeners = () => {
   })
 }
 
+const onDone = (e) => {
+  const currentId = +e.target.closest('li').dataset.id;
+  store.data.map(el => {
+    if (el.id === currentId) {
+      el.done = !el.done;
+    }
+  });
+  setItems();
+  showItems();
+};
+
 const onDelete = (e) => {
   const currentId = +e.target.closest('li').dataset.id;
   store.data = store.data.filter(el => el.id !== currentId);
@@ -43,11 +64,3 @@ const onDelete = (e) => {
 };
 
 // ? подумать как состояние какое хранилище выбрано влияет на всю работу
-
-const addTodo = (e) => {
-  e.preventDefault();
-  console.log(1)
-  setItems(input.value);
-  showItems();
-  input.value = '';
-};

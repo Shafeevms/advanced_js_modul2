@@ -18,10 +18,3 @@ export const setItems = async (name) => {
   : await import ('./local.js');
   storage.setData(name);
 };
-
-export const onDone = async (e) => {
-  const storage = document.querySelector('#server').checked
-  ? await import ('./server.js')
-  : await import ('./local.js');
-  storage.done(e);
-};

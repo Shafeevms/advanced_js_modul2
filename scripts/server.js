@@ -1,4 +1,5 @@
 import { store } from "./store.js";
+import { showItems } from './render.js';
 
 console.log('Серверное хранилище');
 
@@ -20,4 +21,20 @@ export const setData = (name) => {
     method: 'POST',
     body: JSON.stringify(body)
   })
+};
+
+// ?
+export const done = (e) => {
+  const currentId = +e.target.closest('li').dataset.id;
+  const body = {
+    done: false,
+    name,
+    owner: window.location.hash || '#me',
+  }
+  fetch(`${URL}/${currentId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(body)
+  });
+  setData();
+  showItems();
 };
