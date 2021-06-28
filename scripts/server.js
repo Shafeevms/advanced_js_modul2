@@ -6,7 +6,7 @@ console.log('Серверное хранилище');
 const URL = 'http://localhost:3000/api/todos';
 
 export const getData = async() => {
-  const res = await fetch(URL);
+  const res = await fetch(URL + `/?owner=${window.location.hash || '#me'}`);
   const json = await res.json();
   store.data = json;
 };
