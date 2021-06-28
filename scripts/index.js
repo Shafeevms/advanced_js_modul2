@@ -1,5 +1,5 @@
 import { showItems } from './render.js';
-import { store, setItems, onDone, onDelete } from './store.js';
+import { setItems, onDone, onDelete } from './store.js';
 
 export const input = document.querySelector('.js-input');
 const addBtn = document.querySelector('.js-add-btn');
@@ -10,7 +10,7 @@ const radioBtn = document.querySelector('.js-radio');
 export const init = async() => {
   await showItems();
   setListeners();
-}
+};
 
 const setListeners = () => {
   addBtn.addEventListener('click', addTodo);
@@ -33,15 +33,10 @@ const setListeners = () => {
   radioBtn.addEventListener('change', (e) => {
     showItems();
   })
-}
-
-
-
-// ? подумать как состояние какое хранилище выбрано влияет на всю работу
+};
 
 const addTodo = (e) => {
   e.preventDefault();
-  console.log(1)
   setItems(input.value);
   showItems();
   input.value = '';

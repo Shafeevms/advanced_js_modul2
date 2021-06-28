@@ -4,7 +4,6 @@ export const store = {
   store: null,
 };
 
-
 export const getItems = async () => {
   const storage = document.querySelector('#server').checked
   ? await import ('./server.js')

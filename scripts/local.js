@@ -1,7 +1,6 @@
 import { store } from './store.js';
 import { showItems } from './render.js';
 
-
 console.log('Локальное хранилище');
 
 export const getData = () => {
