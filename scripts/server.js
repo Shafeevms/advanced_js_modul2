@@ -11,7 +11,6 @@ export const getData = async() => {
   store.data = json;
 };
 
-
 export const setData = (name) => {
   const body = {
     owner: window.location.hash || '#me',
@@ -23,18 +22,23 @@ export const setData = (name) => {
   })
 };
 
-// ?
-export const done = (e) => {
+export const done = async(e) => {
   const currentId = +e.target.closest('li').dataset.id;
+  const done = e.target.closest('li').dataset.done === 'true' ? true : false
   const body = {
-    done: false,
-    name,
-    owner: window.location.hash || '#me',
+    done: !done
   }
-  fetch(`${URL}/${currentId}`, {
+  await fetch(`${URL}/${currentId}`, {
     method: 'PATCH',
     body: JSON.stringify(body)
   });
-  setData();
+  showItems();
+};
+
+export const del = async(e) => {
+  const currentId = +e.target.closest('li').dataset.id;
+  await fetch(`${URL}/${currentId}`, {
+    method: 'DELETE'
+  });
   showItems();
 };

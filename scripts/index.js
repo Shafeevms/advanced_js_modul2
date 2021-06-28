@@ -1,5 +1,5 @@
 import { showItems } from './render.js';
-import { store, setItems, onDone } from './store.js';
+import { store, setItems, onDone, onDelete } from './store.js';
 
 export const input = document.querySelector('.js-input');
 const addBtn = document.querySelector('.js-add-btn');
@@ -35,12 +35,7 @@ const setListeners = () => {
   })
 }
 
-const onDelete = (e) => {
-  const currentId = +e.target.closest('li').dataset.id;
-  store.data = store.data.filter(el => el.id !== currentId);
-  setItems();
-  showItems();
-};
+
 
 // ? подумать как состояние какое хранилище выбрано влияет на всю работу
 

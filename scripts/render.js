@@ -16,7 +16,7 @@ const showItems = async() => {
 const dataString = (arr) => {
   return arr.reduce((acc, el) => {
     return acc += `
-      <li class="todo__item d-flex list-group-item ${el.done ? 'list-group-item-success' : ''}" data-id="${el.id}">
+      <li class="todo__item d-flex list-group-item ${el.done ? 'list-group-item-success' : ''}" data-done="${el.done}" data-id="${el.id}">
       <p class="todo__text col-10 mr-auto">${el.name}</p>
       <div class="button-wrapper align-self-center">
         <button data-action="done" class="btn todo__done btn-primary">Готово</button>

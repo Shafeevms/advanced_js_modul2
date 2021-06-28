@@ -31,3 +31,10 @@ export const done = (e) => {
   setData();
   showItems();
 };
+
+export const del = (e) => {
+  const currentId = +e.target.closest('li').dataset.id;
+  store.data = store.data.filter(el => el.id !== currentId);
+  setData();
+  showItems();
+};
