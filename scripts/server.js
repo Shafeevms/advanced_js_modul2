@@ -23,8 +23,9 @@ export const setData = (name) => {
 };
 
 export const done = async(e) => {
-  const currentId = +e.target.closest('li').dataset.id;
-  const done = e.target.closest('li').dataset.done === 'true' ? true : false
+  const target = e.target.closest('li').dataset;
+  const currentId = +target.id;
+  const done = target.done === 'true' ? true : false
   const body = {
     done: !done
   }

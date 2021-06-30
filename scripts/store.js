@@ -2,9 +2,15 @@ export const store = {
   data: [],
   page: '/',
   store: null,
+  currentTodo: null,
 };
 
 const server = document.querySelector('#server');
+
+// export const module = async(name, param) => {
+//   const storage = await import (server.checked ?'./server.js' : './local.js');
+//   await storage[name](param);
+// };
 
 export const getItems = async () => {
   const storage = await import (server.checked ?'./server.js' : './local.js');

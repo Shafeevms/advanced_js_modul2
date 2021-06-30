@@ -1,5 +1,5 @@
-import { showItems } from './render.js';
-import { setItems, onDone, onDelete } from './store.js';
+import { addTodoItem, showItems, todoItem } from './render.js';
+import { setItems, onDone, onDelete, store } from './store.js';
 
 export const input = document.querySelector('.js-input');
 const addBtn = document.querySelector('.js-add-btn');
@@ -35,9 +35,11 @@ const setListeners = () => {
   })
 };
 
-const addTodo = (e) => {
+const addTodo = async(e) => {
   e.preventDefault();
-  setItems(input.value);
-  showItems();
+  const string = input.value.replace(/[<>/]/g, '');
+  await setItems(string);
+  // showItems();
+  addTodoItem(ul);
   input.value = '';
 };

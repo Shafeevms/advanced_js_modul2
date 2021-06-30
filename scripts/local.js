@@ -1,5 +1,5 @@
 import { store } from './store.js';
-import { showItems } from './render.js';
+import { showItems, markItem } from './render.js';
 
 console.log('Локальное хранилище');
 
@@ -10,25 +10,28 @@ export const getData = () => {
 
 export const setData = (value) => {
   if (value) {
-    store.data.push({
-      id: store.data.length + 1,
+    const newtodo = {
+      id: generatorID(),
       name: value,
       done: false,
-    });
+    };
+    store.data.push(newtodo);
+    store.currentTodo = newtodo;
   }
   const page = window.location.hash || '#me';
   localStorage.setItem(page, JSON.stringify(store.data))
 };
 
 export const done = (e) => {
+  const target = e.target.closest('li');
   const currentId = +e.target.closest('li').dataset.id;
-  store.data.map(el => {
+  store.data.forEach(el => {
     if (el.id === currentId) {
       el.done = !el.done;
     }
   });
   setData();
-  showItems();
+  markItem(target);
 };
 
 export const del = (e) => {
@@ -37,3 +40,5 @@ export const del = (e) => {
   setData();
   showItems();
 };
+
+const generatorID = () => +Date.now().toString().slice(0,10);
