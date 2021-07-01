@@ -39,7 +39,7 @@ const addTodo = async(e) => {
   e.preventDefault();
   const string = input.value.replace(/[<>/]/g, '');
   await setItems(string);
-  // showItems();
+  console.log(store.currentTodo);
   addTodoItem(ul);
   input.value = '';
 };

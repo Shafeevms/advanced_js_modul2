@@ -5,21 +5,26 @@ console.log('Серверное хранилище');
 
 const URL = 'http://localhost:3000/api/todos';
 
+window.location.hash || '#me'
+
 export const getData = async() => {
-  const res = await fetch(URL + `/?owner=${window.location.hash || '#me'}`);
+  const res = await fetch(URL);
   const json = await res.json();
-  store.data = json;
+  store.data = filteredData(json, location.hash);
 };
 
-export const setData = (name) => {
+export const setData = async(string) => {
   const body = {
     owner: window.location.hash || '#me',
-    name,
+    name: string,
   }
-  fetch(URL, {
+  const res = await fetch(URL, {
     method: 'POST',
     body: JSON.stringify(body)
-  })
+  });
+  const json = await res.json();
+  store.currentTodo = json;
+  console.log(store.currentTodo);
 };
 
 export const done = async(e) => {
@@ -43,3 +48,5 @@ export const del = async(e) => {
   });
   showItems();
 };
+
+const filteredData = (arr, hash = '#me') => arr.filter(el => el.owner === hash);
