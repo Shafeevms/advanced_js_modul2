@@ -20,7 +20,10 @@ const dataString = (arr) => {
   }, '')
 };
 
-const addTodoItem = (el) => el.insertAdjacentHTML('beforeend', todoItem(store.currentTodo));
+const addTodoItem = (el) => {
+  el.insertAdjacentHTML('beforeend', todoItem(store.currentTodo));
+  store.currentTodo = null;
+};
 
 const todoItem = (el) => (
   `<li class="todo__item d-flex list-group-item ${el.done ? 'list-group-item-success' : ''}" data-done="${el.done}" data-id="${el.id}">
