@@ -23,8 +23,7 @@ export const setData = async(string) => {
     body: JSON.stringify(body)
   });
   const json = await res.json();
-  store.currentTodo = await json;
-  console.log(27, store.currentTodo);
+  store.currentTodo = json;
 };
 
 export const done = async(e) => {

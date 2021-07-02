@@ -30,16 +30,18 @@ const setListeners = () => {
     window.location.hash = e.target.dataset.name;
     showItems();
   })
-  radioBtn.addEventListener('change', (e) => {
+  radioBtn.addEventListener('change', () => {
     showItems();
   })
 };
 
 const addTodo = async(e) => {
   e.preventDefault();
-  const string = input.value.replace(/[<>/]/g, '');
+  const string = input
+                  .value
+                  .replace(/</g, '&lt;')
+                  .replace(/>/g, '&gt;');
   await setItems(string);
-  console.log(42, store.currentTodo);
   addTodoItem(ul);
   input.value = '';
 };

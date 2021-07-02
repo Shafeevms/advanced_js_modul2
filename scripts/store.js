@@ -19,7 +19,7 @@ export const getItems = async () => {
 
 export const setItems = async (name) => {
   const storage = await import (server.checked ?'./server.js' : './local.js');
-  storage.setData(name);
+  await storage.setData(name);
 };
 
 export const onDone = async (e) => {

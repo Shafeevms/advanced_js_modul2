@@ -20,8 +20,15 @@ const dataString = (arr) => {
   }, '')
 };
 
+
+// const addTodoItem = (el) => {
+//   el.insertAdjacentHTML('beforeend', todoItem(store.currentTodo));
+//   store.currentTodo = null;
+// };
 const addTodoItem = (el) => {
-  el.insertAdjacentHTML('beforeend', todoItem(store.currentTodo));
+  const div = document.createElement('div');
+  div.insertAdjacentHTML('beforeend', todoItem(store.currentTodo));
+  el.appendChild(div.firstChild);
   store.currentTodo = null;
 };
 
