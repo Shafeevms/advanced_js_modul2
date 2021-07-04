@@ -5,12 +5,10 @@ console.log('Серверное хранилище');
 
 const URL = 'http://localhost:3000/api/todos';
 
-window.location.hash || '#me'
-
 export const getData = async() => {
   const res = await fetch(URL);
   const json = await res.json();
-  store.data = filteredData(json, location.hash);
+  store.data = filteredData(json, location.hash || '#me');
 };
 
 export const setData = async(string) => {

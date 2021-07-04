@@ -32,6 +32,10 @@ const setListeners = () => {
   })
   radioBtn.addEventListener('change', () => {
     showItems();
+  });
+
+  input.addEventListener('input', () => {
+    input.value ? addBtn.removeAttribute('disabled') : addBtn.setAttribute('disabled', 'disabled')
   })
 };
 
@@ -44,4 +48,5 @@ const addTodo = async(e) => {
   await setItems(string);
   addTodoItem(ul);
   input.value = '';
+  addBtn.setAttribute('disabled', 'disabled')
 };
